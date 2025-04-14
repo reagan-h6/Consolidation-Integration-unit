@@ -105,6 +105,7 @@ section {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
+  font-family: Arial, sans-serif;
 }
 
 #review-form button {

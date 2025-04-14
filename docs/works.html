@@ -2,109 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlickList</title>
+  <title>FlickList - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="web-styles.css" />
 </head>
 <body>
   <header>
     <h1>Flick List</h1>
     <nav class="topnav">
-      <a href='works.html'>Home</a>
-      <a href='reviews.html'>Reviews</a>
-      <a href="#submit">Submit Review</a>
+      <a href="works.html">Home</a>
+      <a href="reviews.html">Reviews</a>
+      <a href='index.html'>Submit Review</a>
     </nav>
   </header>
+
   <main>
+    <section id="intro">
+      <h2>Welcome to Flick List!</h2>
+      <a href='index.html' class="button">Submit Your Own Review</a>
+    </section>
+
     <section id="featured">
-      <h2>Example Submission</h2>
+      <h2>Featured Review Example</h2>
       <div class="movie-card">
-        <img src='images/film.jpg' alt="action clapperboard" />
+        <img src="images/film.jpg" alt="Movie poster placeholder" />
         <div class="movie-info">
-          <h3>Movie Title</h3>
-          <p></p>
+          <h3></h3>
+          <p><strong>Date Watched:</strong> </p>
+          <p><strong>Snack:</strong> </p>
+          <p><strong>Rating:</strong> ★★★★★</p>
+
         </div>
       </div>
     </section>
 
     <section id="submit">
-      <h2>Submit Your Review</h2>
-      <div id="review-form">
-        <input type="text" id="moviename" placeholder="Movie Title" required />
-        <input type="text" id="date" placeholder="Date watched" required />
-        <input type="text" id="snack" placeholder="Snack Had" required />
-        <input type="url" id="poster" placeholder="Image URL (optional)" />
-        <textarea id="review" placeholder="Write your review here..." required></textarea>
-        <div class="star-rating">
-          <span class="star" data-value="1">&#9733;</span>
-          <span class="star" data-value="2">&#9733;</span>
-          <span class="star" data-value="3">&#9733;</span>
-          <span class="star" data-value="4">&#9733;</span>
-          <span class="star" data-value="5">&#9733;</span>
-        </div>
-        <button type="submit" id="submit-btn">Submit Review</button>
-      </div>
+      <h2>Ready to Leave Your Own Review?</h2>
+      <p></p>
+      <a href="index.html#submit" class="button">Submit a Review</a>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2025 FlickList. All rights reserved.</p>
   </footer>
-
-  <script>
-    const form = document.getElementById('review-form');
-    const submitButton = document.getElementById('submit-btn');
-    const stars = document.querySelectorAll('.star');
-    let currentRating = 0;
-
-    // Handle star rating
-    stars.forEach(star => {
-      star.addEventListener('click', () => {
-        currentRating = parseInt(star.getAttribute('data-value'));
-        stars.forEach(s => {
-          s.classList.remove('active');
-          if (parseInt(s.getAttribute('data-value')) <= currentRating) {
-            s.classList.add('active');
-          }
-        });
-      });
-    });
-
-    // Handle form submission
-    form.addEventListener('submit', (e) => {
-      e.preventDefault(); // Prevent form from refreshing the page
-
-      const moviename = document.getElementById('moviename').value;
-      const reviewText = document.getElementById('review').value;
-      const date = document.getElementById('date').value;
-      const snack = document.getElementById('snack').value;
-      const poster = document.getElementById('poster').value;
-
-      // Create the review data object
-      const reviewData = {
-        moviename,
-        reviewText,
-        date,
-        snack,
-        rating: currentRating,
-        poster
-      };
-
-      // Get reviews from localStorage or initialize it
-      let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-      reviews.push(reviewData); // Add the new review
-      localStorage.setItem('reviews', JSON.stringify(reviews)); // Save to localStorage
-
-      // Reset the form and stars
-      form.reset();
-      currentRating = 0;
-      stars.forEach(s => s.classList.remove('active'));
-
-      // Redirect to reviews page
-      setTimeout(() => {
-        window.location.href = 'reviews.html'; // Navigate to reviews page
-      }, 100); // Delay to make sure the form is reset before redirect
-    });
-  </script>
 </body>
 </html>
