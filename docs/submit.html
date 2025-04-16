@@ -23,7 +23,6 @@
         <input type="text" id="moviename" placeholder="Movie Title" required />
         <input type="text" id="date" placeholder="Date watched" required />
         <input type="text" id="snack" placeholder="Snack Had" required />
-        <input type="url" id="poster" placeholder="Image URL (optional)" />
         <textarea id="review" placeholder="Write your review here..." required></textarea>
         <div class="star-rating">
           <span class="star" data-value="1">&#9733;</span>
@@ -65,7 +64,6 @@
         date: document.getElementById('date').value,
         snack: document.getElementById('snack').value,
         reviewText: document.getElementById('review').value,
-        poster: document.getElementById('poster').value,
         rating: currentRating
       };
 
